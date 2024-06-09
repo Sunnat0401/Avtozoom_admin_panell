@@ -1,7 +1,39 @@
-
+import './HomePages.css'
 import React, { useState } from 'react';
+const dataSource = [
+  {
+    key: '1',
+    name: 'Mike',
+    age: 32,
+    address: '10 Downing Street',
+  },
+  {
+    key: '2',
+    name: 'John',
+    age: 42,
+    address: '10 Downing Street',
+  },
+];
 
+const columns = [
+  {
+    title: 'Name',
+    dataIndex: 'name',
+    key: 'name',
+  },
+  {
+    title: 'Age',
+    dataIndex: 'age',
+    key: 'age',
+  },
+  {
+    title: 'Address',
+    dataIndex: 'address',
+    key: 'address',
+  },
+];
 import {
+  LogoutOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
   UploadOutlined,
@@ -9,7 +41,7 @@ import {
   VideoCameraOutlined,
 } from '@ant-design/icons';
 
-import { Button, Layout, Menu, theme } from 'antd';
+import { Button, Layout, Menu, Table, theme } from 'antd';
 import logo from '../../assets/logo.svg';
 const { Header, Sider, Content } = Layout;
 
@@ -18,6 +50,42 @@ const HomePages = () => {
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
+
+
+  // table
+
+  const dataSource = [
+    {
+      key: '1',
+      name: 'Mike',
+      age: 32,
+      address: '10 Downing Street',
+    },
+    {
+      key: '2',
+      name: 'John',
+      age: 42,
+      address: '10 Downing Street',
+    },
+  ];
+  
+  const columns = [
+    {
+      title: 'Name_en',
+      dataIndex: 'name',
+      key: 'name',
+    },
+    {
+      title: 'Name_ru',
+      dataIndex: 'age',
+      key: 'age',
+    },
+    {
+      title: 'Images',
+      dataIndex: 'address',
+      key: 'address',
+    },
+  ];
   return (
     <Layout style={{height:"100vh" , padding:'1px 0'}}>
       <Sider trigger={null} collapsible collapsed={collapsed}>
@@ -54,8 +122,9 @@ const HomePages = () => {
             padding: 0,
             background: colorBgContainer,
           }}
-        >
-          <Button
+          >
+<div className='wrapper-exit'>
+<Button
             type="text"
             icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
             onClick={() => setCollapsed(!collapsed)}
@@ -65,6 +134,8 @@ const HomePages = () => {
               height: 64,
             }}
           />
+          <button className='btn'> <LogoutOutlined/> Chiqish</button>
+</div>
         </Header>
         <Content
           style={{
@@ -75,7 +146,7 @@ const HomePages = () => {
             borderRadius: borderRadiusLG,
           }}
         >
-          Content
+     <Table dataSource={dataSource} columns={columns} />;
         </Content>
       </Layout>
     </Layout>

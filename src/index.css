@@ -9,3 +9,8 @@
     max-width: 1240px;
     margin: 0 auto;
 }
+.btn{
+    width: 120px;
+    height: 30px;
+margin-right: 0;
+}
